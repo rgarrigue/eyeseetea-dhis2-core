@@ -1431,19 +1431,27 @@ dhis2.db.registerDashboardViewEvent = function () {
 //------------------------------------------------------------------------------
 
 dhis2.db.viewShareForm = function (id, type, name) {
-    dhis2.db.currentShareId = id;
-    dhis2.db.currentShareType = type;
+    $.ajax({
+        url: "../api/sharing?type=" + type + "&id=" + id,
+        complete: function (xhr) {
+            var userCanAddInterpretation = 
+                (xhr.status >= 200 && xhr.status <= 299) || xhr.status == 403;
+            var selector = userCanAddInterpretation ? "#shareForm" : "#shareFormError";
 
-    var title = i18n_share_your_interpretation_of + " " + name;
+            dhis2.db.currentShareId = id;
+            dhis2.db.currentShareType = type;
 
-    $("#shareForm").dialog({
-        modal: true,
-        width: 550,
-        resizable: false,
-        title: title
+            var title = i18n_share_your_interpretation_of + " " + name;
+
+            $(selector).dialog({
+                modal: true,
+                width: 550,
+                resizable: false,
+                title: title
+            });
+        }
     });
 }
-
 dhis2.db.shareInterpretation = function () {
     var text = $("#interpretationArea").val();
 
