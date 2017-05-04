@@ -105,7 +105,8 @@ jQuery( document ).ready( function() {
 
 <div id="shareFormError">
     <p>$i18n.getString( 'cannot_write_interpretation' )</p>
-    <input type="button" class="interpretationButton" value="$i18n.getString( 'close' )" onclick="$(this).closest('.ui-dialog-content').dialog('close');">
+    <a class="greyButtonLink" href="javascript:void(0);" onclick="dhis2.db.closeDialog(this)" 
+       style="margin-top: 1px">$i18n.getString( "close" )</a>
 </div>
 
 <div id="shareHelpForm">

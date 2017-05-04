@@ -1522,6 +1522,10 @@ dhis2.db.downloadImage = function () {
     }
 }
 
+dhis2.db.closeDialog = function (button) {
+    $(button).closest('.ui-dialog-content').dialog('close');
+}
+
 //------------------------------------------------------------------------------
 // Org unit selector
 //------------------------------------------------------------------------------
