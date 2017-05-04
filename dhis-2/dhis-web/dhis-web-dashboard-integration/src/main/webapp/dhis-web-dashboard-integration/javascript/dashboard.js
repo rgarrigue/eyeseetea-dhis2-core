@@ -1452,6 +1452,7 @@ dhis2.db.viewShareForm = function (id, type, name) {
         }
     });
 }
+
 dhis2.db.shareInterpretation = function () {
     var text = $("#interpretationArea").val();
 
